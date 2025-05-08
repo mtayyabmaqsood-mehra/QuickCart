@@ -1,5 +1,5 @@
 
-import { Inngest } from "inngest";  // Importing the Impest class from the 'impest' package
+import { Inngest } from "inngest";  //
 import connectDB from "./db";
 import User from "@/Model/User";
 
