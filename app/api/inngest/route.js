@@ -10,3 +10,14 @@ export const { GET, POST, PUT } = serve({
    syncUserDeletion
   ],
 });
+
+// ✅ Correct for App Router
+
+// import { serve } from "inngest/next";
+// import { inngest, syncUserCreation, syncUserDeletion, syncUserUpdation } from "@/config/inngest";
+
+// export const { GET, POST, PUT } = serve("quickcart-next", [
+//   syncUserCreation,
+//   syncUserUpdation,
+//   syncUserDeletion
+// ]);

@@ -1,4 +1,3 @@
-
 import { Inngest } from "inngest";  //
 import connectDB from "./db";
 import User from "@/Model/User";
@@ -12,7 +11,7 @@ export const syncUserCreation = inngest.createFunction(
         id: 'sync-user-from-clerk'  // Defining the function ID
     },
     { event: 'clerk/user.created' },  // Specifying which event this function should trigger on
-    async (event) => {  // Defining an async function that handles the event
+    async ({event}) => {  // Defining an async function that handles the event
         const { id, first_name, last_name, email_addresses, image_url } = event.data  // Destructuring user data from event
         const userData = {  // Creating a userData object with formatted data
             _id: id,
@@ -30,7 +29,7 @@ export const syncUserUpdation = inngest.createFunction(
         id: 'update-user-from-clerk'  // Defining the function ID
     },
     { event: 'clerk/user.updated' },  // Specifying which event this function should trigger on
-    async (event) => {  // Defining an async function that handles the event
+    async ({event}) => {  // Defining an async function that handles the event
         const { id, first_name, last_name, email_addresses, image_url } = event.data  // Destructuring user data from event
         const userData = {  // Creating a userData object with formatted data
             _id: id,
@@ -49,10 +48,10 @@ export const syncUserDeletion = inngest.createFunction(
         id: 'delete-user-with-clerk'  // Defining the function ID
     },
     { event: 'clerk/user.deleted' },  // Specifying which event this function should trigger on
-    async (event) => {  // Defining an async function that handles the event
+    async ({event}) => {  // Defining an async function that handles the event
         const { id } = event.data  // Destructuring user data from event
      
     await connectDB()
     await User.findByIdAndDelete(id)
     }
-)
+  )
